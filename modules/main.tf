@@ -9,3 +9,4 @@ resource "aws_subnet" "main" {
 
 variable "vpc" {}
 variable "subnets" {}
+
