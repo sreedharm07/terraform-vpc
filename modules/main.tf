@@ -25,8 +25,8 @@ resource "aws_route_table" "main" {
 
 resource "aws_route_table_association" "aws" {
   for_each = var.subnets
-  subnet_id      = aws_subnet.main.id
-  route_table_id = aws_route_table.main.id
+  subnet_id      = aws_subnet.main[each.key].id
+  route_table_id = aws_route_table.main[each.key].id
 }
 
 variable "vpc" {}
