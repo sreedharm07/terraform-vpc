@@ -10,6 +10,8 @@ resource "aws_subnet" "main" {
     Name = each.key
   }
 }
+
+
 resource "aws_route_table" "main" {
   vpc_id = var.vpc
 
@@ -20,6 +22,11 @@ resource "aws_route_table" "main" {
   }
 }
 
+
+resource "aws_route_table_association" "aws" {
+  subnet_id      = aws_subnet.main.id
+  route_table_id = aws_route_table.main.id
+}
 
 variable "vpc" {}
 variable "subnets" {}
